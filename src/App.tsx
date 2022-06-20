@@ -7,7 +7,7 @@ const ffmpeg = createFFmpeg({ log: true });
 function App() {
   const [ready, setReady] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [video, setVideo] = useState<File | null | undefined>();
+  const [video, setVideo] = useState<File | null>();
   const [gif, setGif] = useState<string>();
 
   const convertToGif = async () => {
@@ -16,6 +16,21 @@ function App() {
     const data = ffmpeg.FS("readFile", "out.gif");
     const url = URL.createObjectURL(new Blob([data.buffer], { type: "image/gif" }));
     setGif(url);
+    console.log(video?.size);
+
+    const niceBytes = (x: any) => {
+      const units = ["bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+      let l = 0,
+        n = parseInt(x, 10) || 0;
+
+      while (n >= 1024 && ++l) {
+        n = n / 1024;
+      }
+
+      console.log(n.toFixed(n < 10 && l > 0 ? 1 : 0) + " " + units[l]);
+    };
+
+    niceBytes(video?.size);
   };
 
   const load = async () => {
@@ -30,6 +45,7 @@ function App() {
   }, []);
 
   return (
+    // https://opensource.com/article/17/6/ffmpeg-convert-media-file-formats
     <div className="App">
       {loading && <div>LOADING...</div>}
       <div>
