@@ -45,7 +45,7 @@ function App() {
 
   return (
     // https://opensource.com/article/17/6/ffmpeg-convert-media-file-formats
-    <div className="App">
+    <main className="App">
       {loading && <div>LOADING...</div>}
       <div>
         <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))} />
@@ -65,7 +65,7 @@ function App() {
         <button onClick={convertToGif}>CONVERT</button>
       </div>
       <div>{gif && <img src={gif} width="250px" />}</div>
-    </div>
+    </main>
   );
 }
 
