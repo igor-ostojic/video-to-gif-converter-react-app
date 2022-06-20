@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
 
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 const ffmpeg = createFFmpeg({ log: true });
@@ -50,7 +49,17 @@ function App() {
       {loading && <div>LOADING...</div>}
       <div>
         <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))} />
-        {video && <video controls width="250" src={URL.createObjectURL(video)}></video>}
+        <div className="video-container">
+          {video && (
+            <video
+              className="video-player"
+              controls
+              muted
+              width="250"
+              src={URL.createObjectURL(video)}
+            ></video>
+          )}
+        </div>
       </div>
       <div>
         <button onClick={convertToGif}>CONVERT</button>
