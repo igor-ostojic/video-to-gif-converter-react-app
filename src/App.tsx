@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
+import Video from "./components/Video";
+import Gif from "./components/Gif";
 const ffmpeg = createFFmpeg({ log: true });
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
     setGif(url);
     console.log(video?.size);
 
-    const niceBytes = (x: any) => {
+    const convertBytes = (x: any) => {
       const units = ["bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
       let l = 0,
         n = parseInt(x, 10) || 0;
@@ -28,8 +30,7 @@ function App() {
 
       console.log(n.toFixed(n < 10 && l > 0 ? 1 : 0) + " " + units[l]);
     };
-
-    niceBytes(video?.size);
+    convertBytes(video?.size);
   };
 
   const load = async () => {
@@ -46,25 +47,15 @@ function App() {
   return (
     // https://opensource.com/article/17/6/ffmpeg-convert-media-file-formats
     <main className="App">
-      {loading && <div>LOADING...</div>}
+      {/* {loading && <div>LOADING...</div>} */}
       <div>
         <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))} />
-        <div className="video-container">
-          {video && (
-            <video
-              className="video-player"
-              controls
-              muted
-              width="250"
-              src={URL.createObjectURL(video)}
-            ></video>
-          )}
-        </div>
+        <Video video={video} />
       </div>
       <div>
         <button onClick={convertToGif}>CONVERT</button>
       </div>
-      <div>{gif && <img src={gif} width="250px" />}</div>
+      {gif && <Gif gif={gif} />}
     </main>
   );
 }
