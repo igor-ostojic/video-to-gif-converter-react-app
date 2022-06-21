@@ -28,6 +28,19 @@ body {
   margin: 0 auto;
 }
 
+header {
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  max-width: 70px;
+}
+
 /* Video Container */
 .video-container {
   margin: 0 auto;
