@@ -1,28 +1,50 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { createFFmpeg, fetchFile } from "@ffmpeg/ffmpeg";
 import Video from "./components/Video";
 import Gif from "./components/Gif";
 import Loader from "./components/Loader";
 import InputFile from "./components/InputFile";
+import MultiRangeSlider from "./components/MultiRangeSlider";
 
-const ffmpeg = createFFmpeg({ log: true });
+const ffmpeg = createFFmpeg();
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [video, setVideo] = useState<File | null>();
+  const [video, setVideo] = useState<File | null>(null);
   const [gif, setGif] = useState<string>();
+  const [videolength, setVideoLength] = useState(0);
+  const [startSeconds, setStartSeconds] = useState(0);
+  const [durationSeconds, setDurationSeconds] = useState(0);
+
+  // Get video length
+  const videoRef = useRef<any>();
+
+  const handleLoadedMetadata = () => {
+    const videoReference = videoRef.current;
+    if (!videoReference || video == null) {
+      return;
+    } else {
+      console.log(`The video is ${videoReference.duration} seconds long.`);
+      setVideoLength(Math.floor(videoReference.duration));
+      console.log(videolength);
+    }
+  };
 
   // Convert Function
   const convertToGif = async () => {
     ffmpeg.FS("writeFile", "test.mp4", await fetchFile(video as File));
+    let duration: string = (durationSeconds - startSeconds).toString();
+    let start: string = startSeconds.toString();
+    console.log(`duration is ${duration}`);
+    console.log(`start is ${start}`);
     await ffmpeg.run(
       "-i",
       "test.mp4",
       "-t",
-      "10",
+      `${duration}`,
       "-ss",
-      "2.0",
+      `${start}`,
       "-r",
       "15",
       "-f",
@@ -68,7 +90,7 @@ function App() {
       ) : (
         <div className="main-wrapper">
           <div className="video-and-input-container">
-            <Video video={video} />
+            <Video video={video} handleLoadedMetadata={handleLoadedMetadata} videoRef={videoRef} />
             <InputFile setVideo={setVideo} video={video} />
             {/* <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))} /> */}
           </div>
@@ -104,6 +126,18 @@ function App() {
               </motion.button>
             )}
           </div>
+          {video && videolength > 0 && (
+            <MultiRangeSlider
+              min={0}
+              max={videolength}
+              onChange={({ min, max }: { min: number; max: number }) => {
+                setStartSeconds(min);
+                console.log("min is " + min);
+                setDurationSeconds(max);
+                console.log("max is " + max);
+              }}
+            />
+          )}
           {gif && <Gif gif={gif} />}
         </div>
       )}

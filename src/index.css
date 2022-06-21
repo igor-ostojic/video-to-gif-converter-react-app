@@ -55,12 +55,21 @@ body {
 header {
   display: block;
   padding: 0.5rem 0;
+  margin-top: 0.5rem;
   margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+header a {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -353,6 +362,113 @@ header nav {
   margin-bottom: 3rem;
 }
 
+/* Multi Range Slider */
+.slider-container {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider {
+  position: relative;
+  width: 200px;
+}
+
+.slider__track,
+.slider__range,
+.slider__left-value,
+.slider__right-value {
+  position: absolute;
+}
+
+.slider__track,
+.slider__range {
+  border-radius: 3px;
+  height: 5px;
+}
+
+.slider__track {
+  background-color: #b8bdc2;
+  width: 100%;
+  z-index: 1;
+}
+
+.slider__range {
+  background-color: var(--accent-color);
+  z-index: 2;
+}
+
+.slider__left-value,
+.slider__right-value {
+  color: var(--accent-color);
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.slider__left-value {
+  left: 6px;
+}
+
+.slider__right-value {
+  right: 5px;
+}
+
+/* Removing the default appearance */
+.thumb,
+.thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.thumb {
+  pointer-events: none;
+  position: absolute;
+  height: 0;
+  width: 200px;
+  outline: none;
+}
+
+.thumb--zindex-3 {
+  z-index: 3;
+}
+
+.thumb--zindex-4 {
+  z-index: 4;
+}
+
+.thumb--zindex-5 {
+  z-index: 5;
+}
+
+/* For Chrome browsers */
+.thumb::-webkit-slider-thumb {
+  background-color: #5e6c91;
+  border: none;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  margin-top: 4px;
+  pointer-events: all;
+  position: relative;
+}
+
+/* For Firefox browsers */
+.thumb::-moz-range-thumb {
+  background-color: #5e6c91;
+  border: none;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  margin-top: 4px;
+  pointer-events: all;
+  position: relative;
+}
+
 /* Loader Animation */
 .lds-ellipsis {
   margin: 15rem auto;
@@ -409,5 +525,23 @@ header nav {
   }
   100% {
     transform: translate(24px, 0);
+  }
+}
+
+/* Media Queries */
+
+@media (max-width: 910px) {
+  #root {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 630px) {
+  .video-container {
+    width: 100%;
+    height: 250px;
+    max-width: 772px;
+    border-radius: var(--big-border-radius);
+    transition: all 0.25s ease;
   }
 }

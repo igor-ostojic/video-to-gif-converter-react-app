@@ -17,7 +17,7 @@ const Header = () => {
           whileTap={{ scale: 0.9 }}
           className="logo-container"
         >
-          <a href="#">
+          <a href=".">
             <img src={Logo} alt="Logo" className="logo" />
           </a>
         </motion.div>
