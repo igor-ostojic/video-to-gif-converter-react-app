@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import defaultVideo from "../assets/intro.webm";
 import IntroTitle from "./IntroTitle";
 
