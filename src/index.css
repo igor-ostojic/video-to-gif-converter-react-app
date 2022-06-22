@@ -176,6 +176,19 @@ header a {
   padding: 8px;
 }
 
+.right-content a {
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .right-content a:nth-of-type(1) {
   margin-bottom: 0.25rem;
 }
@@ -362,6 +375,10 @@ header a {
   margin-bottom: 3rem;
 }
 
+.gif-container:hover {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+}
+
 /* Multi Range Slider */
 .slider-container {
   margin: 2rem 0;
@@ -402,7 +419,8 @@ header a {
 .slider__left-value,
 .slider__right-value {
   color: var(--accent-color);
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 13px;
   margin-top: 20px;
 }
 
@@ -446,7 +464,7 @@ header a {
   background-color: #5e6c91;
   border: none;
   border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px 0px;
   cursor: pointer;
   height: 18px;
   width: 18px;
@@ -460,13 +478,26 @@ header a {
   background-color: #5e6c91;
   border: none;
   border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px 0px;
   cursor: pointer;
   height: 18px;
   width: 18px;
   margin-top: 4px;
   pointer-events: all;
   position: relative;
+}
+
+.slider-text {
+  font-size: 0.9rem;
+  position: absolute;
+}
+
+.start-text {
+  transform: translate(-122px, 1px);
+}
+
+.end-text {
+  transform: translate(122px, 1px);
 }
 
 /* Loader Animation */

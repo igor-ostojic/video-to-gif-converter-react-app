@@ -15,7 +15,7 @@ const Video = (props: Video) => {
         ref={props.videoRef}
         className="video-player"
         controls={props.video ? true : false}
-        autoPlay={props.video ? false : true}
+        autoPlay
         muted
         width="250"
         src={props.video ? URL.createObjectURL(props.video) : defaultVideo}
