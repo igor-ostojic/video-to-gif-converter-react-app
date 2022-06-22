@@ -29,6 +29,7 @@ function App() {
   const [startSeconds, setStartSeconds] = useState(0);
   const [durationSeconds, setDurationSeconds] = useState(0);
   const [gifSize, setGifSize] = useState("");
+  const [convertLoader, setConvertLoader] = useState(false);
 
   // Get video length
   const videoRef = useRef<any>();
@@ -46,6 +47,7 @@ function App() {
 
   // Convert Function
   const convertToGif = async () => {
+    setConvertLoader(true);
     ffmpeg.FS("writeFile", "test.mp4", await fetchFile(video as File));
     let duration: string = (durationSeconds - startSeconds).toString();
     let start: string = startSeconds.toString();
@@ -67,6 +69,7 @@ function App() {
     const data = ffmpeg.FS("readFile", "out.gif");
     const url = URL.createObjectURL(new Blob([data.buffer], { type: "image/gif" }));
     setGif(url);
+    setConvertLoader(false);
     console.log(video?.size);
 
     const gifFileSize = await fetch(url).then((r) => r.blob());
@@ -106,7 +109,12 @@ function App() {
       ) : (
         <div className="main-wrapper">
           <div className="video-and-input-container">
-            <Video video={video} handleLoadedMetadata={handleLoadedMetadata} videoRef={videoRef} />
+            <Video
+              video={video}
+              handleLoadedMetadata={handleLoadedMetadata}
+              videoRef={videoRef}
+              convertLoader={convertLoader}
+            />
             <InputFile setVideo={setVideo} video={video} />
             {/* <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))} /> */}
           </div>
@@ -179,7 +187,11 @@ function App() {
           )}
           {gif && <Gif gif={gif} />}
           {gif && (
-            <>
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
               <div className="gif-size">
                 gif file size : <span>{gifSize}</span>
               </div>
@@ -200,7 +212,7 @@ function App() {
                 </svg>
                 Download your GIF
               </a>
-            </>
+            </motion.div>
           )}
         </div>
       )}

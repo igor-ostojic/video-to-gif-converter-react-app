@@ -1,10 +1,12 @@
 import defaultVideo from "../assets/intro.webm";
+import ConvertLoader from "./ConvertLoader";
 import IntroTitle from "./IntroTitle";
 
 interface Video {
   video: File | null | undefined;
   handleLoadedMetadata: () => void;
   videoRef: any;
+  convertLoader: boolean;
 }
 
 const Video = (props: Video) => {
@@ -20,6 +22,12 @@ const Video = (props: Video) => {
         src={props.video ? URL.createObjectURL(props.video) : defaultVideo}
         onLoadedMetadata={props.handleLoadedMetadata}
       ></video>
+      {props.convertLoader && (
+        <div className="convert-loader-container">
+          <p className="convert-text">Converting</p>
+          <ConvertLoader />
+        </div>
+      )}
       {!props.video && <IntroTitle />}
     </div>
   );

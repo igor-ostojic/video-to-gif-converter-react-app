@@ -1,9 +1,9 @@
 import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 
 interface Gif {
   gif: string;
 }
-
 const Gif = ({ gif }: Gif) => {
   const fieldRef = useRef<HTMLInputElement>(null);
 
@@ -16,9 +16,15 @@ const Gif = ({ gif }: Gif) => {
   }, [gif]);
 
   return (
-    <div className="video-container gif-container" ref={fieldRef}>
+    <motion.div
+      initial={{ opacity: 0, y: 25 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5 }}
+      className="video-container gif-container"
+      ref={fieldRef}
+    >
       {gif && <img src={gif} className="video-player" />}
-    </div>
+    </motion.div>
   );
 };
 

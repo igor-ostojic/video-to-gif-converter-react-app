@@ -20,8 +20,11 @@ const InputFile = ({ setVideo, video }: Props) => {
         type="file"
         name="file-input"
         id="file-input"
+        accept="video/*"
         className="file-input__input"
-        onChange={(e) => setVideo(e.target.files?.item(0))}
+        onChange={(e) => {
+          setVideo(e.target.files?.item(0));
+        }}
       />
       <label
         className={video ? "file-input__label file-input__label__active" : "file-input__label"}
