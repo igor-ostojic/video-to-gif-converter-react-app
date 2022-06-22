@@ -39,9 +39,9 @@ function App() {
     if (!videoReference || video == null) {
       return;
     } else {
-      console.log(`The video is ${videoReference.duration} seconds long.`);
+      // console.log(`The video is ${videoReference.duration} seconds long.`);
       setVideoLength(Math.floor(videoReference.duration));
-      console.log(videolength);
+      // console.log(videolength);
     }
   };
 
@@ -51,8 +51,8 @@ function App() {
     ffmpeg.FS("writeFile", "test.mp4", await fetchFile(video as File));
     let duration: string = (durationSeconds - startSeconds).toString();
     let start: string = startSeconds.toString();
-    console.log(`duration is ${duration}`);
-    console.log(`start is ${start}`);
+    // console.log(`duration is ${duration}`);
+    // console.log(`start is ${start}`);
     await ffmpeg.run(
       "-i",
       "test.mp4",
@@ -70,10 +70,10 @@ function App() {
     const url = URL.createObjectURL(new Blob([data.buffer], { type: "image/gif" }));
     setGif(url);
     setConvertLoader(false);
-    console.log(video?.size);
+    // console.log(video?.size);
 
     const gifFileSize = await fetch(url).then((r) => r.blob());
-    console.log("GIF FILE SIZE IS : " + gifFileSize.size);
+    // console.log("GIF FILE SIZE IS : " + gifFileSize.size);
 
     // Show Gif Size Function
     const convertBytes = (x: any) => {
@@ -156,9 +156,9 @@ function App() {
               max={videolength}
               onChange={({ min, max }: { min: number; max: number }) => {
                 setStartSeconds(min);
-                console.log("min is " + min);
+                // console.log("min is " + min);
                 setDurationSeconds(max);
-                console.log("max is " + max);
+                // console.log("max is " + max);
               }}
             />
           )}
