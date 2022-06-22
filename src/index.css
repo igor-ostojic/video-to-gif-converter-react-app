@@ -371,7 +371,7 @@ header a {
 
 /* Gif Container */
 .gif-container {
-  margin-top: 15rem;
+  margin-top: 1.75rem;
   margin-bottom: 1.75rem;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 20px 30px;
 }
@@ -395,6 +395,18 @@ header a {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: enter ease-in-out 0.5s;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0.5;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .slider {
@@ -541,6 +553,19 @@ header a {
 
 .download-button:hover {
   background-color: #2f3a58;
+}
+
+/* Doulbe Arrow */
+.double-arrow-container {
+  text-align: center;
+  margin-top: 6rem;
+  margin-bottom: 4rem;
+}
+
+.double-arrow-container svg {
+  color: #8c97b9;
+  width: 4rem;
+  height: 4rem;
 }
 
 /* Loader Animation */
