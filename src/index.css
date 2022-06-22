@@ -715,6 +715,17 @@ header a {
     border-radius: var(--big-border-radius);
     transition: all 0.25s ease;
   }
+
+  .conver-button {
+    min-width: 100%;
+  }
+
+  .file-input__label {
+    min-width: 100%;
+  }
+  .download-button {
+    min-width: 100%;
+  }
 }
 
 @media only screen and (max-height: 820px) {
