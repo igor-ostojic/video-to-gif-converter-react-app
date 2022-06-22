@@ -1,7 +1,7 @@
 module.exports = function (app) {
-  app.use(function (request, response, next) {
-    response.setHeader("Cross-Origin-Opener-Policy", "same-origin");
-    response.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
-    next();
+  app.use(function (req, res, next) {
+      res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+      res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+      next();
   });
 };
