@@ -57,6 +57,9 @@ function App() {
     setGif(url);
     console.log(video?.size);
 
+    const gifFileSize = await fetch(url).then((r) => r.blob());
+    console.log("GIF FILE SIZE IS : " + gifFileSize.size);
+
     // Show Gif Size Function
     const convertBytes = (x: any) => {
       const units = ["bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
@@ -69,7 +72,7 @@ function App() {
 
       setGifSize(n.toFixed(n < 10 && l > 0 ? 1 : 0) + " " + units[l]);
     };
-    convertBytes(video?.size);
+    convertBytes(gifFileSize.size);
   };
 
   // Initial Load of ffmpeg
@@ -142,7 +145,9 @@ function App() {
           {gif && <Gif gif={gif} />}
           {gif && (
             <>
-              <div className="gif-size">gif file size : <span>{gifSize}</span></div>
+              <div className="gif-size">
+                gif file size : <span>{gifSize}</span>
+              </div>
               <a href={gif} download className="download-button">
                 <svg
                   width="15"
