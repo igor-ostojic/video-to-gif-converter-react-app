@@ -53,7 +53,7 @@
 
 ffmpeg.wasm is a pure WebAssembly / JavaScript port of FFmpeg. It enables video & audio record, convert and stream right inside browsers.
 
-  <p align="center">It currently only works on desktop browsers ( ffmpeg-core.js INITIAL_MEMORY seems to be too large for mobile devices :          https://github.com/ffmpegwasm/ffmpeg.wasm/issues/299 )</p>
+  <p align="left">It currently only works on desktop browsers ( ffmpeg-core.js INITIAL_MEMORY seems to be too large for mobile devices :          https://github.com/ffmpegwasm/ffmpeg.wasm/issues/299 )</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
