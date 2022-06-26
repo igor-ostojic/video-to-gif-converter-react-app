@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/igor-ostojic/video-to-gif-converter-react-app">
-    <img src="public/favicon (2).ico" alt="Logo" width="80" height="80">
+    <img src="public/vgif-logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">"VGif" Video to GIF Converter App</h3>
