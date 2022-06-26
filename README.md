@@ -19,6 +19,9 @@
     ·
     <a href="https://github.com/igor-ostojic/video-to-gif-converter-react-app/issues">Request Feature</a>
   </p>
+
+<video align="center" src='public/repo-video.webm'></video>
+
 </div>
 
 <!-- TABLE OF CONTENTS -->
