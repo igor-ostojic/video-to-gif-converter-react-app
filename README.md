@@ -19,6 +19,7 @@
     ·
     <a href="https://github.com/igor-ostojic/video-to-gif-converter-react-app/issues">Request Feature</a>
   </p>
+  <p align="center">It currently only works on desktop browsers ( ffmpeg-core.js INITIAL_MEMORY seems to be too large for mobile devices :          https://github.com/ffmpegwasm/ffmpeg.wasm/issues/299 )</p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
