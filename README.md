@@ -112,6 +112,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Igor Ostojic - igorostojic1996@gmail.com
+Igor Ostojic - igorostojic.work@gmail.com
 
 <p align="right">(<a href="#top">back to top</a>)</p>
